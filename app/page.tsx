@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -259,14 +258,11 @@ export default function HIVAIDSInfo() {
                         </li>
                       </ul>
                     </div>
-                    <div className="relative h-64 rounded-lg overflow-hidden">
-                      <Image
-                        src="/placeholder.svg?height=300&width=400"
-                        alt={t.hivPrevention}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <div
+                      className="h-64 rounded-lg overflow-hidden bg-cover bg-center"
+                      style={{ backgroundImage: "url(/prevention.jpg)" }}
+                      aria-label={t.hivPrevention}
+                    ></div>
                   </div>
                 </CardContent>
               </Card>
@@ -300,14 +296,11 @@ export default function HIVAIDSInfo() {
                         </li>
                       </ul>
                     </div>
-                    <div className="relative h-64 rounded-lg overflow-hidden">
-                      <Image
-                        src="/placeholder.svg?height=300&width=400"
-                        alt={t.hivTesting}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <div
+                      className="h-64 rounded-lg overflow-hidden bg-cover bg-center"
+                      style={{ backgroundImage: "url(/testing.jpg)" }}
+                      aria-label={t.hivTesting}
+                    ></div>
                   </div>
                 </CardContent>
               </Card>
@@ -341,14 +334,11 @@ export default function HIVAIDSInfo() {
                         </li>
                       </ul>
                     </div>
-                    <div className="relative h-64 rounded-lg overflow-hidden">
-                      <Image
-                        src="/placeholder.svg?height=300&width=400"
-                        alt={t.hivTreatment}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <div
+                      className="h-64 rounded-lg overflow-hidden bg-cover bg-center"
+                      style={{ backgroundImage: "url(/treatment.jpg)" }}
+                      aria-label={t.hivTreatment}
+                    ></div>
                   </div>
                 </CardContent>
               </Card>
