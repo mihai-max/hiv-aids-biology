@@ -10,8 +10,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/hiv-aids-info', // Replace with your repository name
-  assetPrefix: '/hiv-aids-info/', // Replace with your repository name
+  basePath: '/hiv-aids-biology', // Replace with your repository name
+  assetPrefix: '/hiv-aids-biology/', // Replace with your repository name
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
