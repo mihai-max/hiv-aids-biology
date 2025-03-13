@@ -2,32 +2,49 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # or your default branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '18'
-      
+          node-version: '18'  # or your preferred Node.js version
+          cache: 'npm'  # or 'yarn' if you use yarn
+
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
-      
-      - name: Build
+        run: npm ci  # or 'yarn install --frozen-lockfile'
+
+      - name: Configure Next.js for static export
+        # Make sure your next.config.js has output: 'export' set
+        run: |
+          if [ ! -f next.config.js ] || ! grep -q "output: 'export'" next.config.js; then
+            echo "Adding output: 'export' to next.config.js"
+            if [ -f next.config.js ]; then
+              # Append to existing config
+              sed -i "s/module.exports = {/module.exports = {\n  output: 'export',/" next.config.js
+            else
+              # Create new config file
+              echo "module.exports = { output: 'export' };" > next.config.js
+            fi
+          fi
+
+      - name: Build project
         run: npm run build
-      
-      - name: Deploy to GitHub Pages
+        # This should create the 'out' directory
+
+      - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: out
           branch: gh-pages
-
+          clean: true
+          force: true
+          attempt-limit: 3
 
