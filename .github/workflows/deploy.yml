@@ -19,7 +19,7 @@ jobs:
           cache: 'npm'  # or 'yarn' if you use yarn
 
       - name: Install dependencies
-        run: npm ci  # or 'yarn install --frozen-lockfile'
+        run: npm ci --legacy-peer-deps # or 'yarn install --frozen-lockfile'
 
       - name: Configure Next.js for static export
         # Make sure your next.config.js has output: 'export' set
